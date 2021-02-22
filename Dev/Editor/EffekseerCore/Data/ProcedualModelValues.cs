@@ -55,7 +55,10 @@ namespace Effekseer.Data
 		[Key(key = "PM_Divisions")]
 		public Value.Int2 Divisions { get; private set; } = new Value.Int2(10, 10, x_min: 2, y_min: 2);
 
-		// Twist‚ª—~‚µ‚¢
+		[Selected(Value = (int)ProcedualModelType.Mesh)]
+		[Key(key = "PM_AngleBeginEnd")]
+		public Value.Float Rotate { get; private set; } = new Value.Float(0.0f);
+
 	}
 
 	public class ProceduralModelRibbonParameter
@@ -208,16 +211,14 @@ namespace Effekseer.Data
 
 	public class ProceduralModelVertexColorNoiseParameter
 	{
-		[Key(key = "PM_CurlNoiseFreq")]
-		public Value.Vector3D CurlNoiseFrequency { get; private set; } = new Value.Vector3D(1.0f, 1.0f, 1.0f, x_step: 0.01f, y_step: 0.01f, z_step: 0.01f);
+		public Value.Vector3D NoiseFrequency { get; private set; } = new Value.Vector3D(1.0f, 1.0f, 1.0f, x_step: 0.01f, y_step: 0.01f, z_step: 0.01f);
 
-		[Key(key = "PM_CurlNoiseOffset")]
-		public Value.Vector3D CurlNoiseOffset { get; private set; } = new Value.Vector3D(0.0f, 0.0f, 0.0f, x_step: 0.01f, y_step: 0.01f, z_step: 0.01f);
-		[Key(key = "PM_CurlNoisePower")]
-		public Value.Vector3D CurlNoisePower { get; private set; } = new Value.Vector3D(0.0f, 0.0f, 0.0f, x_step: 0.01f, y_step: 0.01f, z_step: 0.01f);
+		public Value.Vector3D NoiseOffset { get; private set; } = new Value.Vector3D(0.0f, 0.0f, 0.0f, x_step: 0.01f, y_step: 0.01f, z_step: 0.01f);
+
+		public Value.Vector3D NoisePower { get; private set; } = new Value.Vector3D(0.0f, 0.0f, 0.0f, x_step: 0.01f, y_step: 0.01f, z_step: 0.01f);
 	}
 
-		public class ProcedualModelParameter : INamedObject
+	public class ProcedualModelParameter : INamedObject
 	{
 		const int SelecterType = 100;
 		const int SelecterPrimitive = 200;
@@ -228,6 +229,7 @@ namespace Effekseer.Data
 		[Key(key = "PM_Type")]
 		public Value.Enum<ProcedualModelType> Type { get; private set; } = new Value.Enum<ProcedualModelType>(ProcedualModelType.Mesh);
 
+		/*
 		[Selected(ID = SelecterType, Value = (int)ProcedualModelType.Mesh)]
 		[Key(key = "PM_AngleBeginEnd")]
 		public Value.Vector2D AngleBeginEnd { get; private set; } = new Value.Vector2D(0.0f, 360.0f);
@@ -360,6 +362,19 @@ namespace Effekseer.Data
 
 		[Key(key = "PM_ColorCenterArea")]
 		public Value.Vector2D ColorCenterArea { get; private set; } = new Value.Vector2D(0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, x_step: 0.01f, y_step: 0.01f);
+		*/
+
+		[Selected(ID = SelecterType, Value = (int)ProcedualModelType.Mesh)]
+		public ProceduralModelMeshParameter Mesh { get; private set; } = new ProceduralModelMeshParameter();
+
+		[Selected(ID = SelecterType, Value = (int)ProcedualModelType.Ribbon)]
+		public ProceduralModelRibbonParameter Ribbon { get; private set; } = new ProceduralModelRibbonParameter();
+
+		public ProceduralModelShapeParameter Shape { get; private set; } = new ProceduralModelShapeParameter();
+		public ProceduralModelShapeNoiseParameter ShapeNoise { get; private set; } = new ProceduralModelShapeNoiseParameter();
+		public ProceduralModelVertexColorParameter VertexColor { get; private set; } = new ProceduralModelVertexColorParameter();
+
+		public ProceduralModelVertexColorNoiseParameter VertexColorNoise { get; private set; } = new ProceduralModelVertexColorNoiseParameter();
 	}
 
 	public class ProcedualModelCollection : Value.ObjectCollection<ProcedualModelParameter>
