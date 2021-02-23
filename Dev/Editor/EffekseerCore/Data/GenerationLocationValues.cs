@@ -214,11 +214,11 @@ namespace Effekseer.Data
 			}
 
 			[Selected(ID = ModelReferenceTypeID, Value = (int)ModelReferenceType.ProdecualModel)]
-			public ProcedualModelReference Reference
+			public ProceduralModelReference Reference
 			{
 				get;
 				private set;
-			} = new ProcedualModelReference();
+			} = new ProceduralModelReference();
 
 			[Name(language = Language.Japanese, value = "生成位置種類")]
 			[Name(language = Language.English, value = "Method of Spawning")]
