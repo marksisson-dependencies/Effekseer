@@ -213,7 +213,7 @@ namespace Effekseer.Data
 				private set;
 			}
 
-			[Selected(ID = ModelReferenceTypeID, Value = (int)ModelReferenceType.ProdecualModel)]
+			[Selected(ID = ModelReferenceTypeID, Value = (int)ModelReferenceType.ProceduralModel)]
 			public ProceduralModelReference Reference
 			{
 				get;

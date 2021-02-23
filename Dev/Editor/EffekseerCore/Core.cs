@@ -928,6 +928,11 @@ namespace Effekseer
 				updater.Update(doc);
 			}
 
+			if (toolVersion < ParseVersion("1.60α9"))
+			{
+				var updater = new Utils.ProjectVersionUpdator16Alpha8To16x();
+				updater.Update(doc);
+			}
 
 			var root = doc["EffekseerProject"]["Root"];
 			if (root == null) return null;
@@ -971,16 +976,6 @@ namespace Effekseer
 			{
 				var o = proceduralModels as object;
 				Data.IO.LoadObjectFromElement(proceduralElement as System.Xml.XmlElement, ref o, false);
-			}
-			else
-			{
-				// Compatibility
-				proceduralElement = doc["EffekseerProject"]["ProcedualModel"];
-				if (proceduralElement != null)
-				{
-					var o = proceduralModels as object;
-					Data.IO.LoadObjectFromElement(proceduralElement as System.Xml.XmlElement, ref o, false);
-				}
 			}
 
 			// recording option (this option is stored in local or global)

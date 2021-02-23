@@ -569,7 +569,7 @@ namespace Effekseer.Binary
 				{
 					var _node = node as Data.Node;
 
-					if (IsRenderedNode(_node) && _node.DrawingValues.Type.Value == Data.RendererValues.ParamaterType.Model && _node.DrawingValues.Model.ModelReference.Value == ModelReferenceType.ProdecualModel)
+					if (IsRenderedNode(_node) && _node.DrawingValues.Type.Value == Data.RendererValues.ParamaterType.Model && _node.DrawingValues.Model.ModelReference.Value == ModelReferenceType.ProceduralModel)
 					{
 						var param = _node.DrawingValues.Model.Reference.Value;
 						
@@ -579,7 +579,7 @@ namespace Effekseer.Binary
 						}
 					}
 
-					if (_node.GenerationLocationValues.Type.Value == Data.GenerationLocationValues.ParameterType.Model && _node.GenerationLocationValues.Model.ModelReference.Value == ModelReferenceType.ProdecualModel)
+					if (_node.GenerationLocationValues.Type.Value == Data.GenerationLocationValues.ParameterType.Model && _node.GenerationLocationValues.Model.ModelReference.Value == ModelReferenceType.ProceduralModel)
 					{
 						var param = _node.GenerationLocationValues.Model.Reference.Value;
 

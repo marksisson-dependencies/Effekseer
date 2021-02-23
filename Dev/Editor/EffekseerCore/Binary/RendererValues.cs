@@ -107,7 +107,7 @@ namespace Effekseer.Binary
 			// Fallback
 			if (version < ExporterVersion.Ver16Alpha2)
 			{
-				if (value != null && value.Type.Value == Data.RendererValues.ParamaterType.Model && value.Model.ModelReference.Value == Data.ModelReferenceType.ProdecualModel)
+				if (value != null && value.Type.Value == Data.RendererValues.ParamaterType.Model && value.Model.ModelReference.Value == Data.ModelReferenceType.ProceduralModel)
 				{
 					value = null;
 				}
@@ -476,7 +476,7 @@ namespace Effekseer.Binary
 						data.Add((-1).GetBytes());
 					}
 				}
-				else if (value.Model.ModelReference.Value == Data.ModelReferenceType.ProdecualModel)
+				else if (value.Model.ModelReference.Value == Data.ModelReferenceType.ProceduralModel)
 				{
 					if (value.Model.Reference.Value != null)
 					{
